@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Bloc de notas medieval</title>
+  <style>
+    body {
+      background: url('https://i.imgur.com/IVLrQyR.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: "Papyrus", "Times New Roman", serif;
+      text-align: center;
+      color: #3b2a1a;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 28px;
+      text-shadow: 1px 1px 3px #c0a060;
+    }
+    textarea {
+      width: 90%;
+      height: 300px;
+      background: rgba(255, 248, 220, 0.8);
+      border: 2px solid #a67c52;
+      border-radius: 8px;
+      font-family: "Papyrus", serif;
+      font-size: 16px;
+      padding: 10px;
+      color: #3b2a1a;
+      resize: none;
+    }
+    button {
+      margin-top: 10px;
+      background-color: #a67c52;
+      color: #fff8dc;
+      border: none;
+      padding: 8px 16px;
+      font-family: "Papyrus", serif;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #8b5e34;
+    }
+  </style>
+</head>
+<body>
+  <h1>📜 Bloc de notas medieval 📜</h1>
+  <textarea id="texto" placeholder="Escribe tus pensamientos antiguos..."></textarea><br>
+  <button onclick="guardarTexto()">Guardar nota</button>
+  <button onclick="borrarTexto()">Borrar todo</button>
+
+  <script>
+    // Cargar texto guardado (si existe)
+    document.getElementById("texto").value = localStorage.getItem("nota_medieval") || "";
+
+    function guardarTexto() {
+      const texto = document.getElementById("texto").value;
+      localStorage.setItem("nota_medieval", texto);
+      alert("📜 Nota guardada en el pergamino.");
+    }
+
+    function borrarTexto() {
+      if (confirm("¿Deseas borrar todo el contenido del pergamino?")) {
+        document.getElementById("texto").value = "";
+        localStorage.removeItem("nota_medieval");
+      }
+    }
+  </script>
+</body>
+</html>
